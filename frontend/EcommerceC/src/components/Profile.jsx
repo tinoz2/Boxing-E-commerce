@@ -1,8 +1,14 @@
-import React from 'react'
+import Logout from "./Logout"
 
 const Profile = () => {
     return (
-        <div>Profile</div>
+        <div>
+            Profile
+
+            <div>
+                <Logout />
+            </div>
+        </div>
     )
 }
 

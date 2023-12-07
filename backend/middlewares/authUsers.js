@@ -1,4 +1,4 @@
-const z = require('zod');
+import z from 'zod'
 
 const authRegister = z.object({
     email: z.string({ required_error: "Email is required" })
@@ -22,7 +22,7 @@ const authLogin = z.object({
         })
 })
 
-module.exports = {
+export {
     authRegister,
     authLogin
 }

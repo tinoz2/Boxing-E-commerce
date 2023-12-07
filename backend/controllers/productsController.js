@@ -1,5 +1,5 @@
-const Product = require('../schemas/product')
-const newProduct = require('../schemas/product')
+import Product from '../schemas/product.js'
+import newProduct from '../schemas/product.js'
 
 const addProduct = async (req, res) => {
     try {
@@ -41,4 +41,4 @@ const deleteProduct = async (req, res) => {
     }
 }
 
-module.exports = { addProduct, getProducts, updateProduct, deleteProduct }
+export { addProduct, getProducts, updateProduct, deleteProduct };

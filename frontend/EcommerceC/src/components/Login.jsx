@@ -2,17 +2,24 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import { loginRequest } from '../auth/axios'
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
 
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm()
+    const { login } = useAuth();
 
     const onSubmit = async (values) => {
         try {
             const res = await loginRequest(values)
-            res.data ? navigate('/profile') :
+            if(res.data){
+                navigate('/profile')
+                login()
+            }
+            else{
                 console.log("Error")
+            }
         }
         catch (e) {
             console.log(e)

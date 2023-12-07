@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
 const URI = "mongodb://127.0.0.1:27017/myshop"
 const db = mongoose.connection
@@ -21,4 +21,4 @@ db.on('error', (error) => {
     console.log(error);
 })
 
-module.exports = connectDB;
+export default connectDB;

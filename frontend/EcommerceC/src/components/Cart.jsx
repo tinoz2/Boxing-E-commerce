@@ -17,14 +17,14 @@ const Cart = () => {
     const handleCheckout = async () => {
         try {
             const response = await payments({
-                amount: formattedTotal,
-                id: cart.length > 0 ? cart[0]._id : '',
-                qty: cart.map((product) => product.qty)[0],
-                title: cart.map((product) => product.title)[0],
-                description: cart.map((product) => product.description)[0],
-                qty: cart.map((product) => product.qty)[0]
+                cart: cart.map((product) => ({
+                    _id: product._id,
+                    qty: product.qty,
+                    title: product.title,
+                    description: product.description,
+                    amount: product.price,
+                })),
             });
-            console.log(response);
             window.location.href = response.data.url;
         } catch (error) {
             console.error('Error during checkout:', error);

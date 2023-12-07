@@ -9,4 +9,4 @@ const validateAuth = (schema) => (req, res, next) => {
     }
 }
 
-module.exports = validateAuth
+export default validateAuth

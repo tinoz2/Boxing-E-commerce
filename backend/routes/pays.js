@@ -1,6 +1,6 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
-const { payCheckout, paySucces, payCancel } = require('../controllers/paysController')
+import { payCheckout, paySucces, payCancel } from '../controllers/paysController.js'
 
 router.post('/checkout', payCheckout)
 
@@ -8,4 +8,4 @@ router.get('/success', paySucces)
 
 router.get('/cancel', payCancel)
 
-module.exports = router
+export default router

@@ -1,14 +1,17 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
-const { login, register, profile } = require('../controllers/usersControllers')
-const expressValidator = require('../middlewares/authData')
-const { authLogin, authRegister } = require('../middlewares/authUsers')
-const validateAuth = require('../middlewares/validateAuth')
+import { login, register, profile, logout } from '../controllers/usersControllers.js'
+import expressValidator from '../middlewares/authData.js'
+import { authLogin, authRegister } from '../middlewares/authUsers.js'
+import validateAuth from '../middlewares/validateAuth.js'
+import validateToken from '../middlewares/validateToken.js'
 
 router.post('/register', validateAuth(authRegister), expressValidator, register)
 
 router.post('/login', validateAuth(authLogin), expressValidator, login)
 
-router.get('/profile/:id', expressValidator, profile)
+router.post('/logout', expressValidator, logout)
 
-module.exports = router
+router.get('/profile/:id', validateToken , expressValidator, profile)
+
+export default router
