@@ -16,4 +16,8 @@ export const payments = (data) => {
     return axios.post('http://localhost:3001/pays/checkout', data)
 }
 
+export const paymentsMp = (data) => {
+    return axios.post('http://localhost:3001/paysmp/checkoutmp', data)
+}
+
 export default registerRequest

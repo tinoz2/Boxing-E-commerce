@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import registerRequest from '../auth/axios'
+import { getValidationErrorMessage } from '../utils/errorsValidation';
 
 const Register = () => {
 
@@ -33,15 +34,12 @@ const Register = () => {
                     maxLength: 50
                 })}
             />
-            {
-                errors.email?.type === 'required' && <span className='text-red-600 my-1 text-sm'>This field is required</span>
-            }
-            {
-                errors.email?.type === 'minLength' && <span className='text-red-600 my-1 text-sm'>Min length required is 5</span>
-            }
-            {
-                errors.email?.type === 'maxLength' && <span className='text-red-600 my-1 text-sm'>Max length possible is 50</span>
-            }
+
+            {errors.email && (
+                <span className='text-red-600 my-1 text-sm'>
+                    {getValidationErrorMessage('Email', errors.email.type)}
+                </span>
+            )}
 
             <label>Password</label>
             <input
@@ -54,15 +52,12 @@ const Register = () => {
                     maxLength: 50
                 })}
             />
-            {
-                errors.password?.type === 'required' && <span className='text-red-600 my-1 text-sm'>This field is required</span>
-            }
-            {
-                errors.password?.type === 'minLength' && <span className='text-red-600 my-1 text-sm'>Min length required is 8</span>
-            }
-            {
-                errors.password?.type === 'maxLength' && <span className='text-red-600 my-1 text-sm'>Max length possible is 50</span>
-            }
+
+            {errors.password && (
+                <span className='text-red-600 my-1 text-sm'>
+                    {getValidationErrorMessage('Password', errors.password.type)}
+                </span>
+            )}
 
             <label>Username</label>
             <input
@@ -76,15 +71,11 @@ const Register = () => {
                 })}
             />
 
-            {
-                errors.user?.type === 'required' && <span className='text-red-600 my-1 text-sm'>This field is required</span>
-            }
-            {
-                errors.user?.type === 'minLength' && <span className='text-red-600 my-1 text-sm'>Min length required is 3</span>
-            }
-            {
-                errors.user?.type === 'maxLength' && <span className='text-red-600 my-1 text-sm'>Max length possible is 50</span>
-            }
+            {errors.user && (
+                <span className='text-red-600 my-1 text-sm'>
+                    {getValidationErrorMessage('User', errors.user.type)}
+                </span>
+            )}
 
             <Button type='submit' className='bg-red-700 p-1 rounded-md text-md font-semibold'>
                 Register

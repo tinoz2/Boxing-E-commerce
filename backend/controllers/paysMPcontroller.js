@@ -1,34 +1,43 @@
-import { MercadoPagoConfig, Payment } from 'mercadopago'
+import { MercadoPagoConfig, Preference } from 'mercadopago';
 import dotenv from 'dotenv';
 dotenv.config();
 
 const payMpCheckout = async (req, res) => {
     try {
-        const mp = new MercadoPagoConfig({
-            accessToken: process.env.MP_ACCESS_TOKEN,
+        const mercadopagoClient = new MercadoPagoConfig({
+            accessToken: process.env.SECRET_KEY_MP,
             options: {
-                timeout: 5000
+                timeout: 3000
             }
         });
 
-        const payment = new Payment(mp);
+        const { cart } = req.body
+
+        const lineItems = cart.map(item => ({
+            title: item.title,
+            unit_price: item.amount,
+            quantity: item.qty,
+            currency_id: 'ARS',
+        }))
 
         const body = {
-            transaction_amount: 300,
-            description: 'Pago de prueba',
-            payment_method_id: 'visa',
-            token: '4509 9535 6623 3704',
-            payer: {
-                email: 'test_user_63274575@testuser.com',
-            }
-        };
+            items: lineItems,
+            back_urls: {
+                success: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+                failure: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+                pending: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            },
+            auto_return: "approved"
+        }
 
-        const response = await payment.create({ body });
-        console.log(response);
-        res.json(response);
+        const preference = new Preference(mercadopagoClient);
+        const result = await preference.create({ body });
+        return res.status(200).json(result.init_point);
+
     } catch (error) {
-        console.log(error);
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 };
 
-export default payMpCheckout
+export default payMpCheckout;

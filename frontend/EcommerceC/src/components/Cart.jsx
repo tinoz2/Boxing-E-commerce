@@ -1,31 +1,41 @@
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterToCart } from '../redux/productSlice';
-import { payments } from '../auth/axios';
+import { payments, paymentsMp } from '../auth/axios';
+import { calculateTotal, calculateTotalItemsInCart, getPriceUSD, prepareCartForCheckout, prepareCartForMpCheckout } from '../utils/cartUtils';
+import CartItem from './CartItem';
 
 const Cart = () => {
 
     const cart = useSelector((state) => state.product);
     const dispatch = useDispatch();
+    const [priceUSD, setPriceUSD] = useState(0);
 
-    const total = cart.reduce((acc, product) => {
-        return acc + product.price * product.qty
-    }, 0)
+    useEffect(() => {
+        getPriceUSD(setPriceUSD);
+    }, []);
 
+    const total = calculateTotal(cart);
     const formattedTotal = parseInt(total.toFixed(0));
-    const totalItemsInCart = cart.reduce((acc, product) => acc + product.qty, 0);
+    const totalItemsInCart = calculateTotalItemsInCart(cart);
 
     const handleCheckout = async () => {
         try {
             const response = await payments({
-                cart: cart.map((product) => ({
-                    _id: product._id,
-                    qty: product.qty,
-                    title: product.title,
-                    description: product.description,
-                    amount: product.price,
-                })),
+                cart: prepareCartForCheckout(cart),
             });
             window.location.href = response.data.url;
+        } catch (error) {
+            console.error('Error during checkout:', error);
+        }
+    };
+
+    const handleCheckoutMp = async () => {
+        try {
+            const response = await paymentsMp({
+                cart: prepareCartForMpCheckout(cart, priceUSD),
+            });
+            window.location.href = response.data;
         } catch (error) {
             console.error('Error during checkout:', error);
         }
@@ -37,19 +47,18 @@ const Cart = () => {
             <p>Items in cart: {totalItemsInCart}</p>
             <ul>
                 {cart.map((product, i) => (
-                    <div key={i}>
-                        <li>{product.title}</li>
-                        <li>{product.description}</li>
-                        <li>{product.price}</li>
-                        <li>{product.qty}</li>
-                        <button onClick={() => dispatch(filterToCart(product))}>Delete</button>
-                    </div>
+                    <CartItem
+                        key={i}
+                        product={product}
+                        onRemove={() => dispatch(filterToCart(product))}
+                    />
                 ))}
             </ul>
             <div>
                 <p>Total: {formattedTotal}</p>
             </div>
             <button onClick={handleCheckout}>Chekout</button>
+            <button onClick={handleCheckoutMp}>Checkout with MP</button>
         </div>
     );
 };
