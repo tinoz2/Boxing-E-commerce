@@ -24,3 +24,62 @@ dist-ssr
 *.sw?
 .env
 ../backend/.env
+
+# Archivos de compilación
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.rar
+*.gz
+*.bz2
+*.7z
+/target/
+/dist/
+/out/
+
+# Dependencias y módulos de paquetes
+/node_modules/
+__pycache__/
+*.pyc
+/.gradle/
+/build/
+/.bundle/
+/vendor/
+
+# Sistema y configuración específica
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs y archivos temporales
+*.log
+*.tmp
+*.swp
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.local
+
+# Archivos de configuración específicos del usuario
+/.env
+/.env.local
+/.env.development
+/.env.test
+/.env.production
