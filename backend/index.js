@@ -60,6 +60,7 @@ app.use('/users', UsersRouter)
 app.use('/pays', PaysRouter)
 app.use('/paysmp', PaysMpRouter)
 
+app.set('trust proxy', true);
 app.set('port', process.env.PORT);
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'));
