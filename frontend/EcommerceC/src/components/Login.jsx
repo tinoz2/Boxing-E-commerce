@@ -15,10 +15,6 @@ const Login = () => {
         try {
             const res = await loginRequest(values)
             if (res.data) {
-                const token = res.data.token
-                console.log(res.data);
-                console.log(token)
-                localStorage.setItem('token', token);
                 navigate('/profile')
                 login()
             }

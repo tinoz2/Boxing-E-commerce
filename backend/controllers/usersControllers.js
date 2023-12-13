@@ -49,16 +49,18 @@ const login = async (req, res) => {
         }, (err, token) => {
             err ? console.log(err) :
                 res.cookie('token', token, {
-                    maxAge: 24 * 60 * 60 * 1000,
+                    httpOnly: true,
+                    secure: true
                 });
             res.json({
                 id: user._id,
                 user: user.user,
                 email: user.email,
                 createdAt: user.createdAt,
-                updatedAt: user.updatedAt
+                updatedAt: user.updatedAt,
             })
-        })
+        }
+        )
     }
     catch (err) {
         console.log(err)

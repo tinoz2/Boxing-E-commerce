@@ -8,12 +8,16 @@ const validateToken = (req, res, next) => {
         return res.status(401).json({ message: 'Token no encontrado' })
 
     jwt.verify(token, process.env.SECRET_TOKEN, (err, user) => {
-        if(err) return res.status(401).json({ message: 'Token inválido' })
+        if (err) {
+            console.error('Error al verificar el token:', err);
+            return res.status(401).json({ message: 'Token inválido' });
+        }
 
-        req.user = user
-    })
+        console.log('Token verificado correctamente:', user);
+        req.user = user;
+        next();
+    });
 
-    next();
 }
 
 export default validateToken

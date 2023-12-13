@@ -39,8 +39,6 @@ const configuracionCSP = {
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'", 'https://cdn.jsdelivr.net'],
     },
-    reportOnly: process.env.NODE_ENV === 'development',
-    reportUri: '/report-violation-endpoint',
 };
 
 app.use('/uploads', express.static('uploads'));
@@ -60,7 +58,6 @@ app.use('/users', UsersRouter)
 app.use('/pays', PaysRouter)
 app.use('/paysmp', PaysMpRouter)
 
-app.set('trust proxy', true);
 app.set('port', process.env.PORT);
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'));
