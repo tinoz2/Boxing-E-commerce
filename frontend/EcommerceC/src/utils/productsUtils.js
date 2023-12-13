@@ -1,8 +1,9 @@
 import axios from 'axios'
+import baseURL from '../config';
 
 export const getData = async (setProducts) => {
     try {
-        const url = 'http://localhost:3001/api/products'
+        const url = `${baseURL}/api/products`
         const res = await axios.get(url);
         setProducts(res.data)
     }

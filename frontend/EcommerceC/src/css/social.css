@@ -1,0 +1,48 @@
+.container-a {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: 1rem;
+    margin-top: 5rem;
+}
+
+.container-a .button {
+    width: 48px;
+    height: 48px;
+    border: none;
+    background-color: var(--back);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.icon {
+    width: 33px;
+    height: 33px;
+    fill: #fff;
+    margin-left: 0.5rem;
+}
+
+.container-a .button:hover {
+    background-color: #0e76a8;
+}
+
+.container-a .button22:hover {
+    background-color: black;
+}
+
+.container-a .button3:hover {
+    background-color: #E50914;
+}
+
+.container-a .button4:hover {
+    background-image: linear-gradient(to right, #5B51D8, #833AB4, #E1306C, #FFD500);
+}
+
+@media (max-width: 655px) {
+    .container-a{
+        flex-direction: row !important;
+        margin-top: 2rem !important;
+        margin-left: 0 !important;
+    }
+}

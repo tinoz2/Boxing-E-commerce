@@ -2,14 +2,258 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-*{
+:root {
+  --red: #C3073F;
+  --back: #1A1A1D;
+  --gray: #4E4E50;
+  --white: #FFFFFF;
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
-  background-color: #333;
+body {
+  background-color: var(--back);
   color: white;
-  font-family: system-ui;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+.container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 325px);
+  gap: 3rem;
+  padding-bottom: 3rem;
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container-wrapper {
+  display: flex;
+}
+
+.container-components {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.container-cards{
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 325px);
+  gap: 3rem;
+  padding-bottom: 3rem;
+  margin-top: 3rem;
+}
+
+.container-buttons1 {
+  display: none;
+}
+
+.disabled2 {
+  display: none;
+}
+
+.asd {
+  display: none;
+}
+
+.disabledd {
+  display: none;
+}
+
+.disabled-44{
+  display: none;
+  position: fixed;
+  z-index: 2;
+}
+
+@media (max-width: 1700px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .container-a{
+    flex-direction: column;
+  }
+  
+  nav {
+    padding: 1rem;
+  }
+
+  .primary-button {
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 1470px) {
+  .icon-boxing {
+    width: 100px;
+  }
+
+  .container-cards {
+    grid-template-columns: repeat(2, 325px);
+    place-items: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  nav {
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 950px) {
+  .icon-boxing {
+    width: 70px;
+  }
+
+  .container-cards {
+    grid-template-columns: repeat(1, 325px);
+  }
+
+  aside {
+    width: 140px !important;
+  }
+
+  .boxing-gloves {
+    width: 200px;
+  }
+
+  .section {
+    flex-direction: column;
+  }
+
+  .container-info-products {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 650px) {
+  .icon-boxing {
+    width: 150px;
+  }
+
+  .disabled-44{
+    display: flex;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .p-main {
+    font-size: 1rem;
+    margin: 0 1rem;
+  }
+
+  .container-cards {
+    grid-template-columns: repeat(1, 200px);
+  }
+
+  aside {
+    width: 100% !important;
+  }
+
+  .icon {
+    width: 33px;
+    height: 33px;
+  }
+
+  .container .button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .h2-shopping {
+    font-size: 2rem;
+  }
+
+  .container-section-1 {
+    margin: 0;
+  }
+
+  .disabled {
+    display: none;
+  }
+
+  .disabled2 {
+    display: block;
+  }
+
+  nav {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    height: 100vh;
+    justify-content: center;
+  }
+
+  .container {
+    flex-direction: row;
+    margin-top: 1.5rem;
+  }
+
+  .container-buttons1 {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: block;
+  }
+
+  .h2-section {
+    margin-top: 1rem;
+  }
+
+  .button-nav {
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+  }
+
+  .container-card {
+    margin-top: 1rem;
+  }
+
+  .asd {
+    display: block;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: white;
+    border: none;
+  }
+
+  .card-form {
+    width: auto !important;
+    margin: 1rem 1rem !important;
+  }
+
+  .h3-form {
+    font-size: 0.8rem !important;
+  }
 }

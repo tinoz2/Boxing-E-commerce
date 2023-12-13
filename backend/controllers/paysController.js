@@ -22,8 +22,8 @@ const payCheckout = async (req, res) => {
         const session = await stripe.checkout.sessions.create({
             line_items: lineItems,
             mode: 'payment',
-            success_url: 'http://localhost:3001/pays/success',
-            cancel_url: 'http://localhost:3001/pays/cancel',
+            success_url: `${process.env.SERVER}/pays/success`,
+            cancel_url: `${process.env.SERVER}/pays/cancel`,
         });
 
         return res.json({ url: session.url });
@@ -34,12 +34,12 @@ const payCheckout = async (req, res) => {
 };
 
 
-const paySucces = (req, res) => {
-    res.send('Pago Exitoso')
+const paySuccess = (req, res) => {
+    res.render('success')
 }
 
 const payCancel = (req, res) => {
-    res.send('Pago Cancelado')
+    res.render('cancel')
 }
 
-export { payCheckout, paySucces, payCancel }
+export { payCheckout, paySuccess, payCancel }

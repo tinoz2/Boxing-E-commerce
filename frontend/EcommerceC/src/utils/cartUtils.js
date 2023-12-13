@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API } from '../config';
 
 export const calculateTotal = (cart) => {
     return cart.reduce((acc, product) => acc + product.price * product.qty, 0);
@@ -10,7 +11,7 @@ export const calculateTotalItemsInCart = (cart) => {
 
 export const getPriceUSD = async (setPriceUSD) => {
     try {
-        const res = await axios.get("https://dolarapi.com/v1/dolares");
+        const res = await axios.get(API);
         const priceUSD = res.data[1].compra;
         setPriceUSD(priceUSD);
     } catch (e) {

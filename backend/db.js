@@ -1,6 +1,8 @@
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+dotenv.config();
 
-const URI = "mongodb://127.0.0.1:27017/myshop"
+const URI = process.env.MONGO_URI
 const db = mongoose.connection
 
 const connectDB = async () => {

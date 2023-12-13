@@ -12,6 +12,6 @@ router.post('/login', validateAuth(authLogin), expressValidator, login)
 
 router.post('/logout', expressValidator, logout)
 
-router.get('/profile/:id', validateToken , expressValidator, profile)
+router.get('/profile', validateToken , expressValidator, profile)
 
 export default router

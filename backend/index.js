@@ -1,5 +1,8 @@
 import express from 'express'
 import cors from 'cors'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import path from 'path'
 import morgan from 'morgan'
 import connectDB from './db.js'
 import ProductsRouter from './routes/products.js'
@@ -16,11 +19,16 @@ import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv';
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const app = express()
 const corsOptions = {
-    origin: 'http://localhost:5173',
-    optionsSuccessStatus: 200
+    origin: process.env.CLIENT,
+    optionsSuccessStatus: 200,
+    credentials: true,
 };
+
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100,
@@ -35,6 +43,7 @@ const configuracionCSP = {
     reportUri: '/report-violation-endpoint',
 };
 
+app.use('/uploads', express.static('uploads'));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(helmet());
@@ -52,6 +61,9 @@ app.use('/pays', PaysRouter)
 app.use('/paysmp', PaysMpRouter)
 
 app.set('port', process.env.PORT);
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(app.get('port'), () => {
     console.log(`Server on port ${app.get('port')}`);

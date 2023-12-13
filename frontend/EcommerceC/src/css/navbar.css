@@ -1,0 +1,59 @@
+aside {
+    width: 13%;
+    height: 100vh;
+    background-color: var(--gray);
+    border-right: 1px solid var(--white);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav {
+    display: grid;
+    grid-template-rows: 275px 400px auto auto;
+    padding: 2.2rem;
+    height: 100vh;
+    z-index: 100;
+    width: 100%;
+}
+
+.icon-boxing {
+    width: 140px;
+}
+
+.button-open-close{
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin-bottom: 2rem;
+    transition: 0.3s ease all;
+}
+
+.button-open-close:hover{
+    background-color: var(--red);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.svg-icon {
+    width: 3rem;
+    height: 3rem;
+    padding: 0.25rem;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+    fill: var(--red);
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect:hover {
+    fill: var(--white);
+}
+
+.svg-icon circle {
+    stroke: var(--red);
+    stroke-width: 1;
+}

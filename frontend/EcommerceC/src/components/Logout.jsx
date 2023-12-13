@@ -8,23 +8,25 @@ const Logout = () => {
     const { logout } = useAuth();
 
     const handleLogout = async () => {
-        try{
+        try {
             const res = await logoutRequest()
-            if(res.data){
+            if (res.data) {
                 navigate('/login')
                 logout()
             }
-            else{
+            else {
                 console.log("Error")
-            } 
+            }
         }
-        catch(err){
+        catch (err) {
             console.log(err)
         }
     }
 
     return (
-        <button className=' bg-red-400 p-2 text-lg font-semibold rounded-md' onClick={handleLogout}>Logout</button>
+        <div className="button-borders button2">
+            <button className='primary-button' onClick={handleLogout}>Logout</button>
+        </div>
     )
 }
 

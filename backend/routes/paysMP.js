@@ -1,11 +1,11 @@
 import express from 'express'
 const router = express.Router()
-import payMpCheckout from '../controllers/paysMPcontroller.js'
+import { payMpCheckout, successMP, cancelMP } from '../controllers/paysMPcontroller.js'
 
 router.post('/checkoutmp', payMpCheckout)
 
-router.get('/successmp', (req, res) => res.send('Success'))
+router.get('/successmp', successMP)
 
-router.get('/webhook', (req, res) => res.send('Webhook'))
+router.get('/cancelmp', cancelMP)
 
 export default router

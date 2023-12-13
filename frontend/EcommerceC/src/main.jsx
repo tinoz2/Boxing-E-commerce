@@ -16,16 +16,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Provider store={store}>
       <AuthProvider>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>} />
+          </Routes>
       </AuthProvider>
     </Provider>
   </BrowserRouter>,

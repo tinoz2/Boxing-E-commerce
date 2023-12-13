@@ -1,6 +1,7 @@
 import { getData } from '../utils/productsUtils';
 import { useEffect, useState } from 'react';
 import ProductItem from './ProductItem';
+import 'ldrs/bouncy'
 
 const Products = () => {
 
@@ -11,13 +12,22 @@ const Products = () => {
     }, [])
 
     return (
-        <div>
+        <div id='container-shop2' className='container container-cards'>
             {
-                products.map((product, i) => (
-                    <ProductItem key={i} product={product} />
-                ))
+                products.length >= 1 ?
+                    products.map((product, i) => (
+                        <ProductItem key={i} product={product} />
+                    ))
+                    :
+                    <div className='absolute sm:left-1/2'>
+                        <l-bouncy
+                            size="80"
+                            speed="2"
+                            color="white"
+                        ></l-bouncy>
+                    </div>
             }
-        </div>
+        </div >
     )
 }
 

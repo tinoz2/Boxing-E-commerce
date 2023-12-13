@@ -1,0 +1,29 @@
+.main{
+    width: 100%;
+    background-image: url('../img/Backround2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-bottom: 2px solid white;
+}
+.container-h1{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto;
+    height: 100vh;
+}
+h1{
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--red);
+}
+.p-main{
+    font-size: 1.2rem;
+}
+.more-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}

@@ -1,5 +1,6 @@
 import Product from '../schemas/product.js'
 import newProduct from '../schemas/product.js'
+import fs from 'fs'
 
 const addProduct = async (req, res) => {
     try {
@@ -41,4 +42,14 @@ const deleteProduct = async (req, res) => {
     }
 }
 
-export { addProduct, getProducts, updateProduct, deleteProduct };
+const uploadFile = (req, res) => {
+    const saveImage = (file) => {
+        const newPath = `./uploads/${file.originalname}`;
+        fs.renameSync(file.path, newPath);
+        return newPath;
+    }
+    const images = saveImage(req.file);
+    res.json({ images })
+}
+
+export { addProduct, getProducts, updateProduct, deleteProduct, uploadFile };

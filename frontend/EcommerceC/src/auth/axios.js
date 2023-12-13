@@ -1,23 +1,23 @@
-import axios from 'axios'
+import instanceAxios from './axiosCreate'
 
 const registerRequest = (data) => {
-    return axios.post('http://localhost:3001/users/register', data)
+    return instanceAxios.post('users/register', data)
 }
 
 export const loginRequest = (data) => {
-    return axios.post('http://localhost:3001/users/login', data)
+    return instanceAxios.post('users/login', data)
 }
 
 export const logoutRequest = () => {
-    return axios.post('http://localhost:3001/users/logout')
+    return instanceAxios.post('users/logout')
 }
 
 export const payments = (data) => {
-    return axios.post('http://localhost:3001/pays/checkout', data)
+    return instanceAxios.post('pays/checkout', data)
 }
 
 export const paymentsMp = (data) => {
-    return axios.post('http://localhost:3001/paysmp/checkoutmp', data)
+    return instanceAxios.post('paysmp/checkoutmp', data)
 }
 
 export default registerRequest

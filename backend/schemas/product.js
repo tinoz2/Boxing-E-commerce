@@ -18,6 +18,10 @@ const productSchema = new Schema({
     qty: {
         type: Number,
         required: true
+    },
+    imagePath: {
+        type: String,
+        required: true,
     }
 }, {timestamps: true})
 

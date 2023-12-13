@@ -15,8 +15,8 @@ const register = async (req, res) => {
         }, process.env.SECRET_TOKEN, {
             expiresIn: '1d',
         }, (err, token) => {
-            err ? console.log(err) : 
-            res.cookie('token', token)
+            err ? console.log(err) :
+                res.cookie('token', token);
             res.json({
                 id: newUser._id,
                 user: newUser.user,
@@ -41,14 +41,18 @@ const login = async (req, res) => {
         if (!passwordMatch) {
             return res.status(401).json({ message: 'Contraseña incorrecta' })
         }
-        
+
         jwt.sign({
             id: user._id,
         }, process.env.SECRET_TOKEN, {
             expiresIn: '1d',
         }, (err, token) => {
-            err ? console.log(err) : 
-            res.cookie('token', token)
+            err ? console.log(err) :
+                res.cookie('token', token, {
+                    httpOnly: true,
+                    secure: false,
+                    maxAge: 24 * 60 * 60 * 1000,
+                });
             res.json({
                 id: user._id,
                 user: user.user,
@@ -70,21 +74,19 @@ const logout = (req, res) => {
 }
 
 const profile = async (req, res) => {
-    try {
-        const { id } = req.params
-        const user = await User.findById(id)
-        res.json({
-            id: user._id,
-            user: user.user,
-            email: user.email,
-            createdAt: user.createdAt,
-            updatedAt: user.updatedAt
-        })
+    const userFound = await User.findById(req.user.id)
+
+    if (!userFound) {
+        res.status(404).json({ message: 'Usuario no encontrado' })
     }
-    catch (err) {
-        console.log(err)
-        res.status(500).json({ message: 'Error al obtener el perfil del usuario' })
-    }
+
+    return res.json({
+        id: userFound._id,
+        user: userFound.user,
+        email: userFound.email,
+        createdAt: userFound.createdAt,
+        updatedAt: userFound.updatedAt,
+    })
 }
 
 export { register, login, logout, profile }
