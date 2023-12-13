@@ -49,14 +49,14 @@ const Profile = () => {
 
             <div className="mb-8 flex justify-center">
                 <p className="font-bold text-2xl">Profile</p>
-                <img className="w-8 rounded-lg ml-2" src={profile} alt="" />
+                <img className="w-8 rounded-lg ml-2" src={profile} alt="profile image" />
             </div>
             <div className="card-3">
                 <div className="infos">
                     <img
                         className="image"
                         src={file ? URL.createObjectURL(file) : profile}
-                        alt="image"
+                        alt="image profile"
                         onClick={handleImageClick}
                     />
                     <input
@@ -95,7 +95,7 @@ const Profile = () => {
 
             <div className="mt-8 flex justify-center">
                 <p className="font-bold text-2xl">Purchase history</p>
-                <img className="w-8 rounded-lg ml-2" src={history} alt="" />
+                <img className="w-8 rounded-lg ml-2" src={history} alt="history icon" />
             </div>
 
             <div className='flex justify-center my-16'>

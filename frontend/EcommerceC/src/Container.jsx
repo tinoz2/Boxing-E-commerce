@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import { ToastContainer } from 'react-toastify'
 import { Link } from 'react-router-dom'
+import baseURL from './config.js'
 
 const Container = () => {
     return (
@@ -14,7 +15,7 @@ const Container = () => {
                 <Home />
                 <Products />
             </div>
-            <Link to='/terms' target='_blank' className='flex justify-center my-8 ml-0 sm:ml-20 font-bold sm:text-xl text-lg'>Términos y Condiciones de Uso</Link>
+            <Link to={`${baseURL}/users/terms`} target='_blank' className='flex justify-center my-8 ml-0 sm:ml-20 font-bold sm:text-xl text-lg'>Términos y Condiciones de Uso</Link>
         </div>
     )
 }

@@ -31,7 +31,7 @@ const CartItem = ({ product, onRemove }) => {
                     onRemove(),
                         notify()
                 }}>
-                    <img className='w-12' src={deleteIcon} alt="" />
+                    <img className='w-12' src={deleteIcon} alt="delete icon" />
                 </button>
             </div>
         </div>
