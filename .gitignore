@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 .env
 ../backend/.env
-/frontend/ecommerceC/src/config.js
+/frontend/EcommerceC/src/config.js
 
 # Archivos de compilación
 *.class
