@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node index.js"
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "@mercadopago/sdk-js": "^0.0.3",
