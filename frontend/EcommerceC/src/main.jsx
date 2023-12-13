@@ -11,6 +11,7 @@ import Login from './components/Login.jsx'
 import Profile from './components/Profile.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
+import Terms from './components/Terms.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="/cart" element={<Cart />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/terms" element={<Terms />} />
             <Route path="/profile" element={
               <ProtectedRoute>
                 <Profile />
