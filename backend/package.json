@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "@mercadopago/sdk-js": "^0.0.3",
     "@stripe/react-stripe-js": "^2.4.0",
