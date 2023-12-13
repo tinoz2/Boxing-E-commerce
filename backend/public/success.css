@@ -92,3 +92,18 @@ a {
 .img-mp{
     width: 400px;
 }
+
+.container-terms{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    padding: 1rem;
+}
+
+span{
+    font-weight: bold;
+    margin: 0.5rem;
+    font-size: 1.2rem;
+}

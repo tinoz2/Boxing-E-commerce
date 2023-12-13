@@ -14,4 +14,8 @@ router.post('/logout', expressValidator, logout)
 
 router.get('/profile', validateToken , expressValidator, profile)
 
+router.get('/terms', (req,res) => {
+    res.render('terms')
+})
+
 export default router
