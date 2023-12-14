@@ -42,7 +42,7 @@
 @media (max-width: 655px) {
     .container-a{
         flex-direction: row !important;
-        margin-top: 2rem !important;
+        margin-top: 0 !important;
         margin-left: 0 !important;
     }
 }

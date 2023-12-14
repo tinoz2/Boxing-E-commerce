@@ -13,12 +13,8 @@ const Navbar = () => {
     const showNavbar = () => {
         const aside = document.querySelector('aside')
         const section = document.getElementById('container-shop2')
-        const section2 = document.getElementById('container-shop')
-        const div = document.getElementById('container-buttons1')
         aside.classList.remove('disabled')
         section.style.display = 'none'
-        section2.style.display = 'none'
-        div.style.display = 'none'
 
         setShowNavbarState(showNavbarState)
     }
@@ -27,12 +23,8 @@ const Navbar = () => {
 
         const aside = document.querySelector('aside')
         const section = document.getElementById('container-shop2')
-        const section2 = document.getElementById('container-shop')
-        const div = document.getElementById('container-buttons1')
         aside.classList.add('disabled')
         section.style.display = 'grid'
-        section2.style.display = 'block'
-        div.style.display = 'none'
 
         setShowNavbarState(showNavbarState)
     }
