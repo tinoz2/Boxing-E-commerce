@@ -1,8 +1,7 @@
 {
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node --use-openssl-ca index.js",
-    "build": "npm run build"
+    "start": "node --use-openssl-ca index.js"
   },
   "dependencies": {
     "@mercadopago/sdk-js": "^0.0.3",
